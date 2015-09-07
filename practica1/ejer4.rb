@@ -1,24 +1,29 @@
 #Devolver info sobre la hora
-#Rehacer con case
-#Meter sumar una hora en otera fucnion
+
 def hora_actual(aHour)
 
-	min = aHour.min
-
-	if (0..10).include?(min)
-		return "En punto"
-	elsif (11..20).include?(min)
-		return "y cuarto"
-	elsif (21..34).include?(min)
-		return "y media"
-	elsif (35..44).include?(min)
-		return "#{(aHour + (60*60)).hour} menos veiticinco"
-	elsif (45..55).include?(min)
-		return "#{(aHour + (60*60)).hour} menos cuarto"
-	else
-		return "casi las #{(aHour + (60*60)).hour}"	
+	def next_hour(aHour)
+		(aHour + 360).hour
 	end
+
+	case aHour.min
+	when 0..10
+		"#{aHour.hour} En Punto"
+	when 11..20
+		"#{aHour.hour} Y cuarto"
+	when 21..34
+		"#{aHour.hour} y media"
+	when 35..44
+		"#{next_hour(aHour)} menos veiticinco"
+	when 45..55
+		"#{next_hour(aHour)} menos cuarto"
+	when 56..59
+		"casi las #{next_hour(aHour)}"
+	else
+		"error"
+	end
+
 end
 
-puts hora_actual Time.now
+puts hora_actual(Time.now)
 
