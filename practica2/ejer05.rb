@@ -11,10 +11,9 @@
 #    # Debe retornar la cantidad de minutos que faltan para la medianoche de hoy
 #    ```
 
-def cuanto_falta?(aTime = nil)
-	if aTime.nil?
-		now = Time.now
-		aTime = Time.new(now.year, now.month, now.day, 23, 59, 59)
-	end
-	(aTime.to_i - Time.now.to_i) / 60
+def cuanto_falta?(aTime = Time.new(Time.now.year, Time.now.month, Time.now.day, 23, 59, 59))
+	(aTime.to_i - Time.now.to_i) / 60.0
 end
+
+puts cuanto_falta?
+puts (cuanto_falta? Time.new(2015, 9, 29, 23, 59, 59)) / 60
